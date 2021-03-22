@@ -13,6 +13,14 @@ const path = require('path');
 // Don't put anything in /pub that you don't want the public to have access to!
 app.use(express.static(path.join(__dirname, '/pub')))
 
+app.get('/', (req, res) => {
+	// sending a string
+	//res.send('This should be the root route!')
+
+	//sending some HTML
+	res.send('<h1>This should be the root route!</h1>')
+})
+
 // will use an 'environmental variable', process.env.PORT, for deployment.
 const port = process.env.PORT || 5000
 app.listen(port, () => {
