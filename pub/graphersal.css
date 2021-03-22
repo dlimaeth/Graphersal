@@ -1,0 +1,11 @@
+.node {
+    transition: fill ease-in 1s;
+    cursor: move;
+}
+
+.text {
+    user-select: none;
+    pointer-events: none;
+    cursor: none;
+    offset: 20;
+}
