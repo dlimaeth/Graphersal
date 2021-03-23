@@ -15,8 +15,33 @@
 
  </head>
  <body>
+   <h1>Graphersal Library Showcase</h1>
+ 	<div id='BFS'>
+       <p>Run Breadth First Search on a random graph with <i>n</i> nodes</p>
+       <form>
+          <input type="text" id="n1" value="3"></input>
+          <button type="button" onclick="generateGraph(g1, document.querySelector('#n1').value)">Generate</button>
+       </form>
+       <button type="button" onclick="runBFS(g1)">Run</button>
+       <button type="button" onclick="reset(g1)">Reset</button>
 
- 	<div id='myId'>Here's some text</div>
+    </div>
+    <div id='colors' style="position: relative; top: 50px;">
+       <p>Set colors of nodes to whatever you want.</p>
+       <input type='color' id="color" name="Color" value="#FF0000" onchange="changeGraphColor(g2, document.querySelector('#color').value)">
+       <form>
+         <input type="text" id="n2" value="3"></input>
+         <button type="button" onclick="generateGraph(g2, document.querySelector('#n2').value)">Generate</button>
+      </form>
+    </div>
+
+    <div id='edgeCut' style="position: relative; top: 50px;">
+      <p>Drag mouse across screen to cut edges</p>
+      <form>
+        <input type="text" id="n3" value="3"></input>
+        <button type="button" onclick="generateGraph(g3, document.querySelector('#n3').value)">Generate</button>
+     </form>
+   </div>
 
  </body>
 
