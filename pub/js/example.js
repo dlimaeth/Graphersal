@@ -81,8 +81,6 @@ function addListeners() {
         q.x = e.clientX;
         q.y = e.clientY;
         q =  q.matrixTransform(g3.getGraphElement().getScreenCTM().inverse());
-        console.log(p)
-        console.log(q)
         g3.cutEdges(p.x, p.y, q.x, q.y)
     });
     //g3.getGraphElement().addEventListener('mouseleave', endDrag);

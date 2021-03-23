@@ -282,7 +282,6 @@ Graphersal.prototype = {
                     edge.node.neigbours = edge.node.neigbours.filter(e => e.node !== node)
                     this.edgeElements.removeChild(edge.edgeElement)
                 }
-                console.log(!intersect)
                 return !intersect
             })
         })
