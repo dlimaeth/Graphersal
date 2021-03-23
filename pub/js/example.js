@@ -17,7 +17,7 @@ function generateGraph(g, n) {
 
     for (let i = 0; i < n; i++) {
         for (let j = i+1; j < n; j++) {
-            parseInt(Math.random()*2) ? g.addEdge(i,j) : null;
+            parseInt(Math.random()*n/5) ?  null : g.addEdge(i,j);
         }
     }
 }
