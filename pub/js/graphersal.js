@@ -83,6 +83,16 @@ function _setEdge(node1, node2) {
     
 }
 
+function _removeEdge(node1, node2, graph) {
+    let edgeElement;
+    node1.neigbours = node1.neigbours.filter(e => {
+        edgeElement = e.edgeElement
+        return e.node !== node2
+    })
+    node2.neigbours = node2.neigbours.filter(e => e.node !== node1)
+    graph.edgeElements.removeChild(edgeElement)
+}
+
 function _orientation(p, q, r) { 
     // See https://www.geeksforgeeks.org/orientation-3-ordered-points/ 
     // for details of below formula. 
@@ -257,6 +267,9 @@ Graphersal.prototype = {
 
     removeNode(index) {
         _removeNode(this.nodes[index], this)
+    },
+    removeEdge(index1, index2) {
+        _removeEdge(this.nodes[index1], this.nodes[index2], this)
     },
     getGraphElement() {
         return this.graphElement
