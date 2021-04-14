@@ -9,3 +9,8 @@
     cursor: none;
     offset: 20;
 }
+
+.image {
+    transition: fill ease-in 1s;
+    cursor: move;
+}

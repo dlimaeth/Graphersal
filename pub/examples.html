@@ -17,21 +17,39 @@
  <body>
    <h1>Graphersal Library Showcase</h1>
  	<div id='BFS'>
-       <p>Run Breadth First Search on a random graph with <i>n</i> nodes</p>
+       <p>Run Breadth First Search on an undirected graph with <i>n</i> nodes or create your own graph</p>
        <form>
-          <input type="text" id="n1" value="3"></input>
-          <button type="button" onclick="generateGraph(g1, document.querySelector('#n1').value)">Generate</button>
-       </form>
+          <input type="number" id="n1" value="3" style="width:30px"></input>
+          <button type="button" onclick="generateGraph(g1, document.querySelector('#n1').value)">Generate random</button>
+          <input type="checkbox" id="addcheck1">Click to add node</input>
+          <input type="checkbox" id="removecheck1">Click to remove node</input>
+          <input type="number" id="e1-1" min="0" style="width:30px"></input>
+          <input type="number" id="e1-2" min="0" style="width:30px"></input>
+          <button type="button" onclick="g1.addEdge(document.querySelector('#e1-1').value, document.querySelector('#e1-2').value)">add edge</button>
+          
+          
+        </form>
        <button type="button" onclick="runBFS(g1)">Run</button>
        <button type="button" onclick="reset(g1)">Reset</button>
 
     </div>
     <div id='colors' style="position: relative; top: 50px;">
-       <p>Set colors of nodes to whatever you want.</p>
-       <input type='color' id="color" name="Color" value="#FF0000" onchange="changeGraphColor(g2, document.querySelector('#color').value)">
+       <p>Set colors of nodes to whatever you want or upload a picture to the node.</p>
+       <form>
+          <input type='color' id="color" name="Color" value="#FF0000" onchange="changeGraphColor(g2, document.querySelector('#color').value)">
+          <input type='file' id="pic" >
+          <input type='number' id="p2" style="width:30px">
+          <button type="button" onclick="addImage(g2, document.querySelector('#p2').value)"> add image</button>
+       </form>
        <form>
          <input type="text" id="n2" value="3"></input>
-         <button type="button" onclick="generateGraph(g2, document.querySelector('#n2').value)">Generate</button>
+         <button type="button" onclick="generateGraph(g2, document.querySelector('#n2').value)">Generate random</button>
+      </form>
+      <form>
+        <input id="nf2" type="checkbox" checked onchange="g2.toggleNodeFill()">NodeFill</input>
+        <input id="nl2" type="checkbox" checked onchange="g2.toggleNodeLabels()">NodeLabels</input>
+        <input id="ef2" type="checkbox" checked onchange="g2.toggleEdgeFill()">EdgeFill</input>
+        <input id="el2" type="checkbox" onchange="g2.toggleEdgeLabels()">EdgeLabels</input>
       </form>
     </div>
 
@@ -39,9 +57,53 @@
       <p>Drag mouse across screen to cut edges</p>
       <form>
         <input type="text" id="n3" value="3"></input>
-        <button type="button" onclick="generateGraph(g3, document.querySelector('#n3').value)">Generate</button>
+        <button type="button" onclick="generateGraph(g3, document.querySelector('#n3').value)">Generate random</button>
      </form>
    </div>
+
+   <div id='DFS'>
+    <p>Run Depth First Search on a directed graph with <i>n</i> nodes or create your own graph</p>
+    <form>
+       <input type="number" id="n4" value="3" style="width:30px"></input>
+       <button type="button" onclick="generateGraph(g4, document.querySelector('#n4').value)">Generate random</button>
+       <input type="checkbox" id="addcheck1">Click to add node</input>
+       <input type="checkbox" id="removecheck1">Click to remove node</input>
+       <input type="number" id="e4-1" min="0" style="width:30px"></input>
+       <input type="number" id="e4-2" min="0" style="width:30px"></input>
+       <button type="button" onclick="g4.addEdge(document.querySelector('#e4-1').value, document.querySelector('#e4-2').value)">add edge</button>
+     </form>
+    <button type="button" onclick="runDFS(g4)">Run</button>
+    <button type="button" onclick="reset(g4)">Reset</button>
+
+ </div>
+
+ <div id='Dijkstra'>
+  <p>Run Dijkstra on a random weighted directed graph with <i>n</i> nodes or create your own graph</p>
+  <form>
+     <input type="number" id="n5" value="3" style="width:30px"></input>
+     <button type="button" onclick="generateGraph5()">Generate random</button>
+     <input type="checkbox" id="addcheck5">Click to add node</input>
+     <input type="checkbox" id="removecheck5">Click to remove node</input>
+     <input type="number" id="e5-1" min="0" style="width:30px"></input>
+     <input type="number" id="e5-2" min="0" style="width:30px"></input>
+     <input type="number" id="e5-3" min="0" style="width:30px"></input>
+     <button type="button" 
+     onclick="g5.addEdge(parseInt(document.querySelector('#e5-1').value),
+      parseInt(document.querySelector('#e5-2').value),
+      parseInt(document.querySelector('#e5-3').value))">add edge</button>
+   </form>
+   <form>
+     <input id="nf5" type="checkbox" checked onchange="g5.toggleNodeFill()">NodeFill</input>
+     <input id="nl5" type="checkbox" checked onchange="g5.toggleNodeLabels()">NodeLabels</input>
+     <input id="ef5" type="checkbox" checked onchange="g5.toggleEdgeFill()">EdgeFill</input>
+     <input id="el5" type="checkbox" onchange="g5.toggleEdgeLabels()">EdgeLabels</input>
+   </form>
+  <button type="button" onclick="runDijkstra(g5)">Run</button>
+  <button type="button" onclick="reset(g5)">Reset</button>
+
+</div>
+
+
 
  </body>
 
