@@ -128,6 +128,19 @@ addListeners()
 
 const g4 = new Graphersal('graph4', true)
 document.querySelector('#DFS').appendChild(g4.getGraphElement())
+
+g4.graphElement.addEventListener('mousedown', (e) => {
+    //https://stackoverflow.com/questions/29261304/how-to-get-the-click-coordinates-relative-to-svg-element-holding-the-onclick-lis
+    if (e.button == 0 && e.target === g4.graphElement && document.getElementById('addcheck4').checked) {
+        const dim = e.target.getBoundingClientRect();
+        const x = e.clientX - dim.left;
+        const y = e.clientY - dim.top;
+        g4.addNode(x, y)
+    }
+    else if (e.button == 0 && document.getElementById('removecheck4').checked && (e.target.classList.contains('node') || e.target.classList.contains('image'))) {
+        g4.removeNodeByElement(e.target)
+    }
+});
 function runDFS(g) {
     // Create a Stack and add our initial node in it
     const stack = []

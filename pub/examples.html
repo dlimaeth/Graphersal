@@ -25,7 +25,7 @@
           <input type="checkbox" id="removecheck1">Click to remove node</input>
           <input type="number" id="e1-1" min="0" style="width:30px"></input>
           <input type="number" id="e1-2" min="0" style="width:30px"></input>
-          <button type="button" onclick="g1.addEdge(document.querySelector('#e1-1').value, document.querySelector('#e1-2').value)">add edge</button>
+          <button type="button" onclick="g1.addEdge(document.querySelector('#e1-1').value, document.querySelector('#e1-2').value)">add edge (node1, node2)</button>
           
           
         </form>
@@ -66,11 +66,11 @@
     <form>
        <input type="number" id="n4" value="3" style="width:30px"></input>
        <button type="button" onclick="generateGraph(g4, document.querySelector('#n4').value)">Generate random</button>
-       <input type="checkbox" id="addcheck1">Click to add node</input>
-       <input type="checkbox" id="removecheck1">Click to remove node</input>
+       <input type="checkbox" id="addcheck4">Click to add node</input>
+       <input type="checkbox" id="removecheck4">Click to remove node</input>
        <input type="number" id="e4-1" min="0" style="width:30px"></input>
        <input type="number" id="e4-2" min="0" style="width:30px"></input>
-       <button type="button" onclick="g4.addEdge(document.querySelector('#e4-1').value, document.querySelector('#e4-2').value)">add edge</button>
+       <button type="button" onclick="g4.addEdge(document.querySelector('#e4-1').value, document.querySelector('#e4-2').value)">add edge (node1, node2)</button>
      </form>
     <button type="button" onclick="runDFS(g4)">Run</button>
     <button type="button" onclick="reset(g4)">Reset</button>
@@ -90,7 +90,7 @@
      <button type="button" 
      onclick="g5.addEdge(parseInt(document.querySelector('#e5-1').value),
       parseInt(document.querySelector('#e5-2').value),
-      parseInt(document.querySelector('#e5-3').value))">add edge</button>
+      parseInt(document.querySelector('#e5-3').value))">add edge (node1, node2, weight)</button>
    </form>
    <form>
      <input id="nf5" type="checkbox" checked onchange="g5.toggleNodeFill()">NodeFill</input>
