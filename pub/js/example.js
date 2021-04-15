@@ -76,6 +76,7 @@ function changeGraphColor(g, color) {
     g.nodes.forEach(node => g.colorNode(node, color))
 }
 
+// https://stackoverflow.com/questions/22087076/how-to-make-a-simple-image-upload-using-javascript-html
 let src;
 window.addEventListener('load', function() {
     document.querySelector('#pic').addEventListener('change', function() {
