@@ -35,7 +35,7 @@
         nodeLabel.setAttribute('font-size', '20')
         nodeLabel.setAttribute('text-anchor', 'middle')
         nodeLabel.style.opacity = graph.nodeLabels.childNodes.length ? graph.nodeLabels.childNodes[0].style.opacity : 1.0;
-        nodeLabel.classList = 'text'
+        nodeLabel.classList = 'label'
         graph.nodeLabels.appendChild(nodeLabel)
         node.nodeLabel = nodeLabel
         node.image = null
@@ -117,12 +117,16 @@
     function _removeEdge(node1, node2, graph) {
         let edgeElement;
         let edgeLabel;
-        node1.neigbours = node1.neigbours.filter(e => {
-            edgeElement = e.edgeElement
-            edgeLabel = e.edgeLabel
-            return e.node !== node2
-        })
-        node2.neigbours = node2.neigbours.filter(e => e.node !== node1 || e.first)
+        const edgeIndex1 = node1.neigbours.findIndex(e => e.node === node2 && (!graph.isDirected || e.first))
+        const edgeIndex2 = node2.neigbours.findIndex(e => e.node === node1 && (!graph.isDirected || !e.first))
+        if (edgeIndex1 == -1 || edgeIndex2 == -1) {
+            console.log("edge does not exist")
+            return;
+        }
+        else {
+            edgeElement = node1.neigbours.splice(edgeIndex1, 1)[0].edgeElement
+            edgeLabel = node2.neigbours.splice(edgeIndex2, 1)[0].edgeLabel
+        }
         graph.edgeElements.removeChild(edgeElement)
         graph.edgeLabels.removeChild(edgeLabel)
     }
@@ -178,7 +182,6 @@
         //this.edges = []
         this.edgeFill = true
     
-        this.selectedElement = null
         // https://www.petercollingridge.co.uk/tutorials/svg/interactive/dragging/
         this.graphElement.addEventListener('mousedown', startDrag);
         this.graphElement.addEventListener('mousemove', drag);
@@ -314,7 +317,7 @@
                 edgeLabel.setAttribute('font-size', '15')
                 edgeLabel.setAttribute('text-anchor', 'middle')
                 edgeLabel.style.opacity = this.edgeLabels.childNodes.length ? this.edgeLabels.childNodes[0].style.opacity : 0.0;
-                edgeLabel.classList = 'text'
+                edgeLabel.classList = 'label'
                 this.edgeLabels.appendChild(edgeLabel)
                 
                 node1.neigbours.push({node: node2, edgeElement: edgeElement, first: true, edgeLabel: edgeLabel, weight: weight !== null ? weight : 1})

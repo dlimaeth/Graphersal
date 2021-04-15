@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>graphersal documentation</title>
+    <link rel="stylesheet" type="text/css" href="documentation.css">
+
+
+ </head>
+ <body>
+     <h1>Documentation</h1>
+     <a href="index.html">Showcase</a>
+     <br>
+
+    <ul>
+        <li>
+            <a href="#gettingStarted">Getting Started</a>
+        </li>
+        <li>
+           <a href="#api">API</a>
+           <ul>
+               <li><a href="#graphersalAttributes"> Graphersal Attributes</a></li>
+               <li><a href="#nodeAttributes">Node Attributes</a></li>
+               <li><a href="#edgeAttributes">Edge Attributes</a></li>
+               <li><a href="#graphersalMethods">Graphersal Methods</a></li>
+           </ul>
+        </li>
+    </ul>
+
+     <h3 id="gettingStarted">Getting Started</h3>
+     <p> To use the library you simply need to import the graphersal.css and 
+         graphersal.js files. So the head section of your html file should look like this.
+     </p>
+     <!--<img src="images/loading library.png" width="676" height="355"> -->
+     <pre>
+        <code>
+            &lt!DOCTYPE html&gt
+            &lthtml lang="en"&gt
+             &lthead&gt
+                &ltmeta charset="utf-8"&gt
+                &ltmeta name="viewport" content="width=device-width, initial-scale=1"&gt
+                
+                &lttitle&gtgraphersal&lt/title&gt
+            
+                &lt!-- Load library --&gt
+                &ltlink rel="stylesheet" type="text/css" href="graphersal.css"&gt
+                &ltscript defer type="text/javascript" src='js/graphersal.js'&gt&lt/script&gt
+            
+                &lt!-- Then we load a script that depends on our library --&gt
+                &ltscript defer type="text/javascript" src='js/example.js'&gt&lt/script&gt
+            
+             &lt/head>
+         </code>
+     </pre>
+    
+     <br>
+     <p>
+         You can add a graph to the DOM like so. In this example we add it to the body but 
+         you can add it to any tag that takes svg elements.
+     </p>
+     <pre>
+         <code>
+            const graphID = 'myGraph'   // The id of the graph element in the DOM       No Default
+            const height = 200          // height of graph element in pixels.           Default: 200
+            const width = 400           // width of graph element in pixels.            Default: 400
+            const isDirected = true     // Whether or not this is a directed graph.     Default: false
+            const myGraph = new Graphersal(graphID, isDirected, height, width)
+            document.querySelector('body').appendChild(myGraph.getGraphElement())
+         </code>
+     </pre>
+     <!--<img src="images/initialize graph.png" width="807" height="138"> -->
+
+     <br>
+
+     <h3 id="api">API</h3>
+     <h4 id="graphersalAttributes">Graphersal Attributes</h4>
+     <table>
+        <tr>
+          <th>Attribute</th>
+          <th>Description</th>
+        </tr>
+        <tr>
+          <td>isDirected</td>
+          <td>Boolean holding whether or not this graph is directed or not. 
+              Should not be changed after initialization.</td>
+        </tr>
+        <tr>
+          <td>graphElement</td>
+          <td>Holds the svg DOM element.</td>
+        </tr>
+        <tr>
+            <td>nodeElements</td>
+            <td>An svg group element that contains all of the node elements in the graph.</td>
+        </tr>
+        <tr>
+            <td>edgeElements</td>
+            <td>An svg group element that contains all of the edge elements in the graph.</td>
+        </tr>
+        <tr>
+          <td>nodeLabels</td>
+          <td>An svg group element that contains all of the node labels in the graph.</td>
+        </tr>
+        <tr>
+            <td>edgeLabels</td>
+            <td>An svg group element that contains all of the edge labels in the graph.</td>
+        </tr>
+        <tr>
+            <td>images</td>
+            <td>An svg group element that contains all of the node images in the graph.</td>
+        </tr>
+        <tr>
+            <td>nodes</td>
+            <td>A list containing all node objects. (See <a href="#nodeAttributes">Node Attributes</a>)</td>
+        </tr>
+        <tr>
+            <td>nodeLabels</td>
+            <td>An svg group element that contains all of the node labels in the graph.</td>
+        </tr>
+      </table>
+
+      <h4 id="nodeAttributes">Node Attributes</h4>
+      <table>
+          <tr>
+              <th>Attribute</th>
+              <th>Description</th>
+          </tr>
+          <tr>
+              <td>element</td>
+              <td> An svg circle element that visually represents this node in the DOM.</td>
+          </tr>
+          <tr>
+            <td>neighbours</td>
+            <td> A list of edge objects (see <a href="#edgeAttributes">Edge Attributes</a>)</td>
+          </tr>
+          <tr>
+            <td>nodeLabel</td>
+            <td> An svg text element in the DOM that has the same location as this node. Displays 
+                the index of this node by default.
+            </td>
+          </tr>
+          <tr>
+            <td>image</td>
+            <td> An svg image element in the DOM that has the same location as this node. Set to null 
+                by default.
+            </td>
+          </tr>
+      </table>
+
+      <h4 id="edgeAttributes">Edge Attributes</h4>
+      <table>
+          <tr>
+              <th>Attribute</th>
+              <th>Description</th>
+          </tr>
+          <tr>
+              <td>node</td>
+              <td> The node object this edge is connected to.</td>
+          </tr>
+          <tr>
+            <td>first</td>
+            <td> A boolean value that represents whether the node that contains this edge is the first 
+                node in the pair or not. <b>Must be used to traverse directed graphs.</b> Since 
+                Nodes will hold edges where they may not be the first node in the pair.
+            </td>
+          </tr>
+          <tr>
+            <td>weight</td>
+            <td> A number that represents the weight of this edge. Default value is 1.</td>
+          </tr>
+          <tr>
+            <td>edgeElement</td>
+            <td> An svg polyline element that visually represents this edge in the DOM.</td>
+          </tr>
+          <tr>
+            <td>edgeLabel</td>
+            <td> An svg text element in the DOM that displays this edge's weight.
+            </td>
+          </tr>
+          <tr>
+            <td>image</td>
+            <td> An svg image element in the DOM that has the same location as this node. Set to null 
+                by default.
+            </td>
+          </tr>
+      </table>
+
+      <h4 id="graphersalMethods">Graphersal Methods</h4>
+      <table>
+         <tr>
+           <th>Method</th>
+           <th>Description</th>
+         </tr>
+         <tr>
+           <td>addNode(cx, cy)</td>
+           <td>Adds a node at position (cx,cy) in the svg element.</td>
+         </tr>
+         <tr>
+           <td>addEdge(index1, index2, weight [Default=1])</td>
+           <td>Adds an edge between nodes index1 and index2 with the given weight. </td>
+         </tr>
+         <tr>
+             <td>colorNode(node, color)</td>
+             <td>Colors the given node object to the given color.</td>
+         </tr>
+         <tr>
+             <td>setFound(node, i)</td>
+             <td>Will set the found attribute of the given node object to true and
+                  will color the node to chartreuse after i seconds.</td>
+         </tr>
+         <tr>
+           <td>resetGraph()</td>
+           <td>Sets all nodes' found attribute to false and colors all nodes to red.</td>
+         </tr>
+         <tr>
+             <td>toggleEdgeFill()</td>
+             <td>Will switch opacity of all edges from 1.0 to 0.0 and vice versa.</td>
+         </tr>
+         <tr>
+            <td>toggleEdgeLabels()</td>
+            <td>Will switch opacity of all edge labels from 1.0 to 0.0 and vice versa.</td>
+        </tr>
+        <tr>
+            <td>toggleNodeFill()</td>
+            <td>Will switch opacity of all nodes from 1.0 to 0.0 and vice versa.</td>
+        </tr>
+        <tr>
+            <td>toggleNodeLabels()</td>
+            <td>Will switch opacity of all node labels from 1.0 to 0.0 and vice versa.</td>
+        </tr>
+         <tr>
+             <td>removeNodeByIndex(index)</td>
+             <td>Removes the node at the given index from the graph.</td>
+         </tr>
+         <tr>
+             <td>removeNodeByElement(element)</td>
+             <td>Removes the node by either its own element or its image element.</td>
+         </tr>
+         <tr>
+             <td>removeEdge(index1, index2)</td>
+             <td>Removes the edge between the nodes at index1 and index2. If the graph is directed 
+                 then the order of the indices matters.
+             </td>
+         </tr>
+         <tr>
+            <td>getGraphElement()</td>
+            <td>Returns the svg graph element.
+            </td>
+        </tr>
+        <tr>
+            <td>getNode(index)</td>
+            <td>Gets the node object at index.
+            </td>
+        </tr>
+        <tr>
+            <td>setDimensions(h, w)</td>
+            <td>Sets the height and width of the svg graph element to h and w respectively in pixels.
+            </td>
+        </tr>
+        <tr>
+            <td>addImage(index, imagePath)</td>
+            <td>Adds the image at imagePath to the node at index.
+            </td>
+        </tr>
+        <tr>
+            <td>cutEdges(x1, y1, x2, y2)</td>
+            <td>Removes all edges in the graph that intersect with the line segment between 
+                (x1,y1) and (x2,y2).
+            </td>
+        </tr>
+       </table>
+
+
+ 
+
+ </body>
+
+</html>

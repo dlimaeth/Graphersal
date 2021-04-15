@@ -6,16 +6,17 @@
     
     <title>graphersal</title>
 
-    <link rel="stylesheet" type="text/css" href="graphersal.css">
-
     <!-- Load library -->
+    <link rel="stylesheet" type="text/css" href="graphersal.css">
     <script defer type="text/javascript" src='js/graphersal.js'></script>
+
     <!-- Then we load a script that depends on our library -->
     <script defer type="text/javascript" src='js/example.js'></script>
 
  </head>
  <body>
    <h1>Graphersal Library Showcase</h1>
+   <a href="documentation.html"> Documentation</a>
  	<div id='BFS'>
        <p>Run Breadth First Search on an undirected graph with <i>n</i> nodes or create your own graph</p>
        <form>
@@ -61,7 +62,7 @@
      </form>
    </div>
 
-   <div id='DFS'>
+   <div id='DFS' style="position: relative; top: 50px;">
     <p>Run Depth First Search on a directed graph with <i>n</i> nodes or create your own graph</p>
     <form>
        <input type="number" id="n4" value="3" style="width:30px"></input>
@@ -77,7 +78,7 @@
 
  </div>
 
- <div id='Dijkstra'>
+ <div id='Dijkstra' style="position: relative; top: 50px;">
   <p>Run Dijkstra on a random weighted directed graph with <i>n</i> nodes or create your own graph</p>
   <form>
      <input type="number" id="n5" value="3" style="width:30px"></input>

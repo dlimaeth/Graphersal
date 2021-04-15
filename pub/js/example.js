@@ -1,7 +1,15 @@
-//url: https://young-castle-42730.herokuapp.com/examples.html?
+//url: https://young-castle-42730.herokuapp.com/
 
 /* JS Library usage examples */
 "use strict";
+
+/* const graphID = 'myGraph'   // The id of the graph element in the DOM       No Default
+const height = 200          // height of graph element in pixels.           Default: 200
+const width = 400           // width of graph element in pixels.            Default: 400
+const isDirected = true     // Whether or not this is a directed graph.     Default: false
+const myGraph = new Graphersal(graphID, isDirected, height, width)
+document.querySelector('body').appendChild(myGraph.getGraphElement()) */
+
 
 const g1 = new Graphersal('graph1', false)
 document.querySelector('#BFS').appendChild(g1.getGraphElement())
@@ -99,9 +107,6 @@ window.addEventListener('load', function() {
 
 const g3 = new Graphersal('graph3', false)
 document.querySelector('#edgeCut').appendChild(g3.getGraphElement())
-function changeGraphColor(g, color) {
-    g.nodes.forEach(node => g.colorNode(node, color))
-}
 
 function addListeners() {
     let p = g3.getGraphElement().createSVGPoint(); 

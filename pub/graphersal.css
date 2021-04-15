@@ -3,7 +3,7 @@
     cursor: move;
 }
 
-.text {
+.label {
     user-select: none;
     pointer-events: none;
     cursor: none;
